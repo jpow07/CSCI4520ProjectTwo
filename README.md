@@ -1,5 +1,7 @@
 ## Overview
-A 2-D game developed with phaser and ES6
+A 2-D game developed with phaser and ES6 
+
+#### Theme: The History of Norwalk Connecticut.
 
 ## Assignment Criteria:
 
