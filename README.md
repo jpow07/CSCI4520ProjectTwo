@@ -1,18 +1,16 @@
 ## Overview
-A 2-D game developed with phaser and ES6
+A 2-D game developed with phaser and ES6 for the mobile platform iPhone XS dimensions.
 
 #### Theme: The History of Norwalk Connecticut.
 https://www.wikiwand.com/en/History_of_Norwalk,_Connecticut
 
 ## Assignment Criteria:
 
-- [ ] Choose Two of the three verbs to use as the Player's primary action:
+- [x] Determine group roles
 
 - [ ] Tell a complete story within a classic arcade game format in 3-5 minutes of gameplay.
 
-- [ ] At least one sprite-based character with at lease two animations.
-
-- [ ] Two different tilemaps made from an original tileset with at least 4 different reusable graphic elements.
+- [ ] Developed for mobile deployment.
 
 - [ ] Provide Professors with Github Link.
 
@@ -22,11 +20,11 @@ https://www.wikiwand.com/en/History_of_Norwalk,_Connecticut
 
 |Name     | Development | Artwork   | Audio   | Story   |
 |   :-:   |    :-:      |  :-:      |  :-:    |  :-:    |
-|Jordan   | Primary     |           |         |         |
-|     |             | Primary   |         |         |
-|  | Primary     |           |         |         |
-|      |             |           |         | Primary |
-| |             |           | Primary |         ||
+|Jordan   | x     |     |         |         |
+|Alyssa   | x     | x   |         |         |
+|Michael  | x     |     |    x    |         |
+|Ellie    |       |  x  |         |         |
+|Jinli    |  x    |     |         |    x    ||
 
 
 ## Developer Notes to Artists
