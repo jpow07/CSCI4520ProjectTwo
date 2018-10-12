@@ -12,6 +12,8 @@ export default class Boot extends Phaser.State {
     //this.load.image("platform", "assets/images/platform.png");
     this.load.image("star", "assets/images/star.png");
     this.load.spritesheet("player", "assets/images/character.png", 32,48);
+    this.load.audio("bgmusic","assets/music/bgm.mp3");
+
   }
 
   create() {

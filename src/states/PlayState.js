@@ -1,8 +1,8 @@
 import Player from "../objects/Player.js"
 
 
-let Jordan, map, cursors;
-export default class extends Phaser.State {
+let Jordan, map, cursors, music;
+export default class PlayState extends Phaser.State {
   constructor() {
     super();
     console.log("In the PlayState");
@@ -11,7 +11,9 @@ export default class extends Phaser.State {
   }
 
   create() {
-
+    music = this.game.add.audio("bgmusic", 1, true);
+     music.play();
+    //this.game.decode("bgmusic", music);
     this.physics.startSystem(Phaser.Physics.ARCADE);
     //Load Map
     // map = this.game.add.tilemap("map", 16, 16);
