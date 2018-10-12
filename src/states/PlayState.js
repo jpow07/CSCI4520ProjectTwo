@@ -11,9 +11,10 @@ export default class extends Phaser.State {
   }
 
   create() {
+
     this.physics.startSystem(Phaser.Physics.ARCADE);
     //Load Map
-     map = this.game.add.tilemap("map", 16, 16);
+    // map = this.game.add.tilemap("map", 16, 16);
     // layer = map.createLayer(0);
     // layer.resizeWorld();
     // this.game.physics.p2.converTilemap(map, layer);
