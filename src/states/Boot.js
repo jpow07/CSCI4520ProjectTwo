@@ -6,12 +6,9 @@ export default class Boot extends Phaser.State {
   }
 
   preload() {
-    this.load.tilemap("map", "../assets/data/plyaground.json");
-    // game.load.image("tileset", "../assets/data/...")
-    //this.load.image("sky", "assets/images/sky.png");
-    //this.load.image("platform", "assets/images/platform.png");
-    this.load.image("star", "assets/images/star.png");
-    this.load.spritesheet("player", "assets/images/character.png", 32,48);
+    this.load.tilemap("playground", "assets/data/playground.json", null, Phaser.Tilemap.TILED_JSON);
+    this.load.image("tiles", "assets/images/tiles.png");
+    this.load.spritesheet("ship", "assets/images/ship.png", 420,420);
     this.load.audio("bgmusic","assets/music/bgm.mp3");
 
   }

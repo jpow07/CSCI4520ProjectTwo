@@ -5,15 +5,15 @@ import ControlHandler from "../utils/ControlHandler.js"
 export default class extends Phaser.Sprite {
 
 
-  constructor({game, x, y, asset, frame}) {
-    super(game, x, y, asset, frame);
+  constructor({game, x, y, asset}) {
+    super(game, x, y, asset);
     this.create();
   }
 
   create() {
 
-    this.animations.add('right', [5,6,7,8],10, false);
-    this.animations.add('left', [0,1,2,3], 10, false);
+    //this.animations.add('right', [5,6,7,8],10, false);
+    //this.animations.add('left', [0,1,2,3], 10, false);
     this.enableBody = true;
     // this.physicsBodyType = Phaser.Physics.ARCADE;
 
@@ -40,17 +40,17 @@ export default class extends Phaser.Sprite {
     this.body.gravity.y = 100 + Math.random() * 100;
 
   	if (moveLeft.isDown){
-  		this.body.velocity.x = -150;
+  		this.body.velocity.x = -550;
   		this.animations.play("left");
   	}
   	else if (moveRight.isDown){
-  		this.body.velocity.x = 150;
+  		this.body.velocity.x = 550;
   		this.animations.play("right");
   	}
   	else {
 
   		this.animations.stop();
-  	  this.frame = 4;
+  	  //this.frame = 4;
   	}
 
     if (moveUp.isDown && this.body.onFloor()) {

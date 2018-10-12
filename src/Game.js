@@ -10,8 +10,8 @@ class Game extends Phaser.Game {
   constructor() {
 
     let config = {
-      width: 800,
-      height: 600,
+      width: 2436,
+      height: 1125,
       renderer: Phaser.AUTO,
       parent: "",
       state: null,
