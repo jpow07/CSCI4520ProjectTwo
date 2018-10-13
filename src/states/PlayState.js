@@ -33,33 +33,9 @@ export default class PlayState extends Phaser.State {
     this.add.existing(ship);
     this.physics.enable(ship, this.physics.ARCADE);
 
-    for (var i = 0; i < 30 ; i++) {
+    this.addFish();
+    this.addOysters();
 
-      oysters = new Oyster({
-        game : this.game,
-        x: Math.floor(Math.random()* this.game.width) + (i * 25),
-        y: this.game.height - 70,
-        asset: "oyster",
-        frame: Math.floor(Math.random()*9)
-
-      });
-      this.add.existing(oysters);
-      // this.physics.enable(oysters, this.physics.ARCADE);
-    }
-    for (var i = 0; i < 10 ; i++) {
-
-      fishes = new Fish({
-        game : this.game,
-        x: Math.floor(Math.random()* this.game.width) + (i * 5),
-        y: Math.floor(this.game.height - (Math.random() * 250)),
-        asset: "fish",
-        frame: 0// Math.floor(Math.random()*9)
-
-
-      });
-      this.add.existing(fishes);
-      // this.physics.enable(oysters, this.physics.ARCADE);
-    }
 
   }
 
@@ -69,12 +45,42 @@ export default class PlayState extends Phaser.State {
       console.log("Death to your ship");
       ship.alive = false;
     }
+  }//End of update()
 
 
 
+
+addOysters() {
+
+  // Generate Oysters
+  for (var i = 0; i < 30 ; i++) {
+    oysters = new Oyster({
+      game : this.game,
+      x: Math.floor(Math.random()* this.game.width) + (i * 25),
+      y: this.game.height - 70,
+      asset: "oyster",
+      frame: Math.floor(Math.random()*9)
+    });
+    this.add.existing(oysters);
   }
 
+} //End of addOysters()
+
+addFish(){
+  // Generate Fish
+  for (var i = 0; i < 5 ; i++) {
+    fishes = new Fish({
+      game : this.game,
+      x: Math.floor(Math.random()* this.game.width) + (i * 5),
+      y: Math.floor(this.game.height - (Math.random() * 250)),
+      asset: "fish",
+      frame: 0
+    });
+    this.add.existing(fishes);
+    }
+
+}//End of addFish()
 
 
 
-}
+}//End of PlayState Class
