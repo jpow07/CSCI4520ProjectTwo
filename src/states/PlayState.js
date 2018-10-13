@@ -1,32 +1,24 @@
 import Player from "../objects/Player.js"
+import LoadLevel from "../utils/LoadLevel.js"
 
 
-
-let Jordan, map, mylayer, cursors, music;
+let Jordan, map, cursors, music, layer;
 export default class PlayState extends Phaser.State {
   constructor() {
     super();
     console.log("In the PlayState");
     this.score = 0;
+    this.level = ["testMap", "testMap"];
 
   }
 
   create() {
     // Instantiate music and Play Music
-    music = this.add.audio("bgmusic", 1, true);
+    music = this.game.add.audio("bgmusic", 1, true);
     music.play();
 
     //Instantiate the Map
-    map = new Phaser.Tilemap(this.game, "playground");//new Phaser.Tilemap(this.game, "playground", 16, 16, 100, 100);
-    map.addTilesetImage("tileset");
-    mylayer = map.createLayer("Foreground");
-    console.log("Format: ")
-    console.log(map.format);
-  console.log(mylayer);
-
-
-
-
+    map = new LoadLevel(this.game, this.level[0]);
 
     this.physics.startSystem(this.physics.ARCADE);
     Jordan = new Player({
