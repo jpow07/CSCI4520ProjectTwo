@@ -25,22 +25,38 @@ export default class PlayState extends Phaser.State {
     ship = new Ship({
         game: this.game,
         x: 400,
-        y: 400,
+        y: 680,
         asset: "ship"
     });
 
     this.add.existing(ship);
     this.physics.enable(ship, this.physics.ARCADE);
 
-    for (var i = 0; i < 5; i++) {
-      oysters = new Oyster(this.game);
+    for (var i = 0; i < 30 ; i++) {
+
+      oysters = new Oyster({
+        game : this.game,
+        x: Math.floor(Math.random()* this.game.width) + (i * 25),
+        y: this.game.width - 100,
+        asset: "oyster",
+        frame: Math.floor(Math.random()*9)
+
+      });
       this.add.existing(oysters);
-      this.physics.enable(oysters, this.physics.ARCADE);
+      // this.physics.enable(oysters, this.physics.ARCADE);
     }
-    
+
+    this.inputEnabled = true;
   }
 
   update() {
+
+    if(ship.weight > 200){
+      console.log("Death to your ship");
+      ship.alive = false;
+    }
+
+
 
   }
 
