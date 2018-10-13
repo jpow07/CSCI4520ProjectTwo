@@ -2,13 +2,16 @@ import ControlHandler from "../utils/ControlHandler.js"
 
 
 //let cursors;
-export default class Player extends Phaser.Sprite {
+export default class Oyster extends Phaser.Sprite {
 
 
-  constructor({game, x, y, asset}) {
-    super(game, x, y, asset);
+  constructor(game) {
+    super(game, Math.random() * 1000, 1050, "oyster",0);
+
     this.create();
     this.anchor.setTo(.5, .5);
+    this.body.velocity.x = 0;
+    this.body.gravity.y = 1000 + Math.random() * 100;
   }
 
   create() {
@@ -16,7 +19,7 @@ export default class Player extends Phaser.Sprite {
     //this.animations.add('right', [5,6,7,8],10, false);
     //this.animations.add('left', [0,1,2,3], 10, false);
     this.enableBody = true;
-     this.physicsBodyType = Phaser.Physics.ARCADE;
+    this.physicsBodyType = Phaser.Physics.ARCADE;
 
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     this.body.collideWorldBounds = true;
@@ -24,8 +27,8 @@ export default class Player extends Phaser.Sprite {
   }
 
   update() {
-    if(this.game.isRunning)
-     this.movementHandler();
+  //  if(this.game.isRunning)
+    // this.movementHandler();
 
   }
 

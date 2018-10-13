@@ -17,7 +17,4 @@ export default class LoadLevel extends Phaser.Tilemap {
       
   }
 
-
-
-
 }

@@ -1,8 +1,9 @@
-import Player from "../objects/Player.js"
+import Ship from "../objects/Player.js"
+import Oyster from "../objects/Oyster.js"
 import LoadLevel from "../utils/LoadLevel.js"
 
 
-let Jordan, map, cursors, music, layer;
+let ship, map, cursors, music, layer, oysters;
 export default class PlayState extends Phaser.State {
   constructor() {
     super();
@@ -21,17 +22,22 @@ export default class PlayState extends Phaser.State {
     map = new LoadLevel(this.game, this.level[0]);
 
     this.physics.startSystem(this.physics.ARCADE);
-    Jordan = new Player({
+    ship = new Ship({
         game: this.game,
         x: 400,
         y: 400,
         asset: "ship"
     });
 
-    this.add.existing(Jordan);
-    this.physics.enable(Jordan, this.physics.ARCADE);
+    this.add.existing(ship);
+    this.physics.enable(ship, this.physics.ARCADE);
 
-
+    for (var i = 0; i < 5; i++) {
+      oysters = new Oyster(this.game);
+      this.add.existing(oysters);
+      this.physics.enable(oysters, this.physics.ARCADE);
+    }
+    
   }
 
   update() {
