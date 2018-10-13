@@ -1,5 +1,6 @@
 
 export default class Boot extends Phaser.State {
+
   constructor() {
     super();
     console.log("In Boot State");
@@ -18,7 +19,21 @@ export default class Boot extends Phaser.State {
     // Load Audio Background Music
     this.load.audio("bgmusic","assets/music/bgm.mp3");
 
-    this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+    /*
+    //font loader looks for this so need to load it before script
+    WebFontConfig = {
+      active: function() {
+        //need a second dellay or else fonts don't load properly first time
+        this.time.events.add(Phaser.Timer.SECOND, createText, this);
+      }
+      
+      google: {
+        familes: ['Veranda']
+      }
+    }
+    */
+
+    //this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 
   }
 
