@@ -14,9 +14,10 @@ export default class Boot extends Phaser.State {
     // Load Ship
     this.load.spritesheet("ship", "assets/images/ship.png", 407,196);
     this.load.spritesheet("oyster", "assets/images/oysters.png", 64,64);
+    this.load.spritesheet("fish", "assets/images/CommonCarp.png", 128,128);
     // Load Audio Background Music
     this.load.audio("bgmusic","assets/music/bgm.mp3");
-    
+
     this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 
   }

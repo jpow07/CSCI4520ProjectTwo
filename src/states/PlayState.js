@@ -1,9 +1,10 @@
 import Ship from "../objects/Player.js"
 import Oyster from "../objects/Oyster.js"
+import Fish from "../objects/Fish.js"
 import LoadLevel from "../utils/LoadLevel.js"
 
 
-let ship, map, cursors, music, layer, oysters;
+let ship, map, cursors, music, layer, oysters, fishes;
 export default class PlayState extends Phaser.State {
   constructor() {
     super();
@@ -37,7 +38,7 @@ export default class PlayState extends Phaser.State {
       oysters = new Oyster({
         game : this.game,
         x: Math.floor(Math.random()* this.game.width) + (i * 25),
-        y: this.game.width - 100,
+        y: this.game.height - 70,
         asset: "oyster",
         frame: Math.floor(Math.random()*9)
 
@@ -45,8 +46,21 @@ export default class PlayState extends Phaser.State {
       this.add.existing(oysters);
       // this.physics.enable(oysters, this.physics.ARCADE);
     }
+    for (var i = 0; i < 10 ; i++) {
 
-    this.inputEnabled = true;
+      fishes = new Fish({
+        game : this.game,
+        x: Math.floor(Math.random()* this.game.width) + (i * 5),
+        y: Math.floor(this.game.height - (Math.random() * 250)),
+        asset: "fish",
+        frame: 0// Math.floor(Math.random()*9)
+
+
+      });
+      this.add.existing(fishes);
+      // this.physics.enable(oysters, this.physics.ARCADE);
+    }
+
   }
 
   update() {
@@ -59,5 +73,8 @@ export default class PlayState extends Phaser.State {
 
 
   }
+
+
+
 
 }
