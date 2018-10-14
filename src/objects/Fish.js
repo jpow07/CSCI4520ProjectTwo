@@ -1,5 +1,6 @@
 import {GameStats} from "../Helper.js"
 let collect;
+let talking;
 export default class Fish extends Phaser.Sprite {
 
 
@@ -25,7 +26,6 @@ export default class Fish extends Phaser.Sprite {
   }
 
   update() {
-
     if(this.game.isRunning) {
       this.movementHandler();
 
@@ -43,8 +43,9 @@ export default class Fish extends Phaser.Sprite {
 
   kill() {
     collect.play();
-    GameStats.weight += 100;
+    GameStats.weight += GameStats.fishWeight;
     this.destroy();
+
   }
 
 }
