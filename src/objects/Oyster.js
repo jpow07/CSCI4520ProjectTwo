@@ -8,6 +8,7 @@ export default class Oyster extends Phaser.Sprite {
   constructor({game, x, y, asset, frame}) {
     super(game, x, y, asset, frame);
     this.create();
+    this.inputEnabled = true;
     //this.anchor.setTo(.5, .5);
   }
 
@@ -20,23 +21,38 @@ export default class Oyster extends Phaser.Sprite {
 
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     this.body.collideWorldBounds = true;
-
   }
 
   update() {
     if(this.game.isRunning)
       this.movementHandler();
-
+      if(this.input.pointerOver()){
+        this.float();
+      }
+    this.events.onInputDown.add(this.kill, this);
   }
 
   movementHandler() {
 
     this.body.gravity.y = 1000 + Math.random() * 100;
 
+  }
 
+  float() {
+    if(this.body.onFloor()){
+      this.body.velocity.x = -150;
+      this.body.rotation -= 5;
+      this.body.velocity.y = -450;
+
+
+    }
 
   }
 
+  kill() {
+    //Weight += 5;
+    this.destroy();
 
+  }
 
 }

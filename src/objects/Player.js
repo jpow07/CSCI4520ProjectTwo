@@ -2,6 +2,7 @@ import ControlHandler from "../utils/ControlHandler.js"
 
 
 //let cursors;
+let isRotating;
 export default class Player extends Phaser.Sprite {
 
 
@@ -10,6 +11,8 @@ export default class Player extends Phaser.Sprite {
     this.create();
     this.anchor.setTo(.5, .5);
     this.weight = 0;
+    this.inputEnabled = true;
+    isRotating = false;
 
   }
 
@@ -33,18 +36,19 @@ export default class Player extends Phaser.Sprite {
      if(!this.alive){
        this.kill();
      }
+    this.events.onInputDown.add(this.kill, this);
   }
 
   movementHandler() {
-    //this.angle -= 5;
-    //let cursors = this.game.input.keyboard.createCursorKeys();
     let moveLeft = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
     let moveRight = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
     let moveUp = this.game.input.keyboard.addKey(Phaser.Keyboard.W);
     let moveDown = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
+    this.scale.x = -1;
+    this.body.velocity.x = 500;
 
-    this.body.velocity.x = 0;
     //this.body.gravity.y = 1000;
+
 
   	if (moveLeft.isDown){
   		this.body.velocity.x = -1950;
@@ -69,13 +73,17 @@ export default class Player extends Phaser.Sprite {
 
   }
 
-  kill(){
+  clickedSprite(){
+    this.body.velocity.y = -150;
 
+  }
+
+  kill(){
 
     this.body.velocity.x = 0;
     this.game.isRunning = false;
     if(!(this.body.y > this.game.height -200)){
-      this.body.rotation -= .5;
+      isRotating = true;
     }
     this.body.gravity.y = 600;
 
@@ -83,4 +91,8 @@ export default class Player extends Phaser.Sprite {
 
   }
 
+  rotateSprite(rotateDirection) {
+    this.body.rotation = -Math.random() * 1;
+
+  }
 }

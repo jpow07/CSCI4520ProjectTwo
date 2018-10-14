@@ -33,53 +33,56 @@ export default class PlayState extends Phaser.State {
     this.add.existing(ship);
     this.physics.enable(ship, this.physics.ARCADE);
 
-    this.addFish();
+    //fishes = this.add.group();
+    //fishes = this.addFish();
+
     this.addOysters();
 
-
+    // Mouse Clicks on objects
+     //let mouseClick = this.game.input.onDown.add(ship.itemTouched, ship);
+    //let mouseClickUp = this.game.input.onUp.add(ship.itemTouched, ship);
   }
 
   update() {
-
     if(ship.weight > 200){
       console.log("Death to your ship");
       ship.alive = false;
     }
+
   }//End of update()
 
 
+  addOysters() {
 
-
-addOysters() {
-
-  // Generate Oysters
-  for (var i = 0; i < 30 ; i++) {
-    oysters = new Oyster({
-      game : this.game,
-      x: Math.floor(Math.random()* this.game.width) + (i * 25),
-      y: this.game.height - 70,
-      asset: "oyster",
-      frame: Math.floor(Math.random()*9)
-    });
-    this.add.existing(oysters);
-  }
-
-} //End of addOysters()
-
-addFish(){
-  // Generate Fish
-  for (var i = 0; i < 5 ; i++) {
-    fishes = new Fish({
-      game : this.game,
-      x: Math.floor(Math.random()* this.game.width) + (i * 5),
-      y: Math.floor(this.game.height - (Math.random() * 250)),
-      asset: "fish",
-      frame: 0
-    });
-    this.add.existing(fishes);
+    // Generate Oysters
+    for (var i = 0; i < 30 ; i++) {
+      oysters = new Oyster({
+        game : this.game,
+        x: Math.floor(Math.random()* this.game.width) + (i * 25),
+        y: this.game.height - 70,
+        asset: "oyster",
+        frame: Math.floor(Math.random()*11)
+      });
+      this.add.existing(oysters);
     }
 
-}//End of addFish()
+  } //End of addOysters()
+
+  addFish(){
+    // Generate Fish
+    for (var i = 0; i < 5 ; i++) {
+      let sprite = fishes.create(64 + (64 * i), 400, );
+      fishes = new Fish({
+        game : this.game,
+        x: Math.floor(Math.random()* this.game.width) + (i * 5),
+        y: Math.floor(this.game.height - (Math.random() * 250)),
+        asset: "fish",
+        frame: 0
+      });
+      this.add.existing(fishes);
+      }
+
+  }//End of addFish()
 
 
 
