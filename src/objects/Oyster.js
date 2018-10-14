@@ -1,6 +1,7 @@
 import {GameStats} from "../Helper.js"
 
-let collectSound;
+let collect;
+let swipe;
 export default class Oyster extends Phaser.Sprite {
 
 
@@ -21,8 +22,11 @@ export default class Oyster extends Phaser.Sprite {
     if(this.body.embedded){
       this.x += 100;
     }
-    // collectSound = this.game.add.audio("collect");
+    collect = this.game.add.audio("collect", .5, false);
+    swipe = this.game.add.audio("swipe", 1, false);
+
   }
+
 
   update() {
 
@@ -31,6 +35,7 @@ export default class Oyster extends Phaser.Sprite {
 
       if(this.input.pointerOver()) {
         this.float();
+        swipe.play();
       }
       if(!this.body.onFloor()){
         this.events.onInputDown.add(this.kill, this);
@@ -63,7 +68,7 @@ export default class Oyster extends Phaser.Sprite {
 
   }
   kill() {
-    // collectSound.play();
+    collect.play();
     this.destroy();
     GameStats.weight += 25;
     GameStats.score += 50;

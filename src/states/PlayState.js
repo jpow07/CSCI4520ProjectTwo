@@ -13,6 +13,7 @@ let oysters;
 let fishes;
 let timer;
 let hud;
+let oceanWave;
 export default class PlayState extends Phaser.State {
   constructor() {
     super();
@@ -25,7 +26,8 @@ export default class PlayState extends Phaser.State {
   create() {
     this.input.maxPointers = 1;
     this.input.circle = 44;
-
+    oceanWave = this.game.add.audio("ocean", .2, true);
+    oceanWave.play();
     //Instantiate the Map
     map = new LoadLevel(this.game, GameStats.levels[GameStats.currentLevel]);
 
