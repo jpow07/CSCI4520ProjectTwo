@@ -1,19 +1,4 @@
-
-let WebFontConfig = {
-
-    //  'active' means all requested fonts have finished loading
-    //  We set a 1 second delay before calling 'createText'.
-    //  For some reason if we don't the browser cannot render the text the first time it's created.
-    active: function() { game.time.events.add(Phaser.Timer.SECOND, createText, this); },
-
-    //  The Google Fonts we want to load (specify as many as you like in the array)
-    google: {
-      families: ['Revalia']
-    }
-
-};
-
-
+import {WebFontConfig} from "../Helper.js"
 export default class Boot extends Phaser.State {
 
   constructor() {
@@ -33,9 +18,7 @@ export default class Boot extends Phaser.State {
     this.load.spritesheet("fish", "assets/images/CommonCarp.png", 128,128);
     // Load Audio Background Music
     this.load.audio("bgmusic","assets/music/bgm.mp3");
-
-    this.game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
-
+    this.load.script('webfont', "//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js");
   }
 
   create() {
@@ -43,5 +26,7 @@ export default class Boot extends Phaser.State {
     this.state.start("MenuState");
 
   }
+
+
 
 }

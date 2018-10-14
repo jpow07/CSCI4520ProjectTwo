@@ -1,6 +1,7 @@
-
-let text;
-let grd;
+let title = null;
+let subtitle = null;
+let gradient;
+let gradient2;
 let music;
 export default class MenuState extends Phaser.State {
   constructor() {
@@ -14,50 +15,34 @@ export default class MenuState extends Phaser.State {
     music = this.game.add.audio("bgmusic", 1, true);
     music.play();
 
-    this.game.stage.setBackgroundColor(0xFFA500);
-    this.createText("Oystervation");
-
+    this.game.stage.setBackgroundColor(0x000000);
+    // Add Title
+    title = this.add.text(this.world.centerX, this.world.centerY, "~ Oyster Hunt ~");
+    title.anchor.setTo(0.5);
+    title.font = 'Wendy One';
+    title.fontSize = 200;
+    gradient = title.context.createLinearGradient(0, 0, 0, 150);
+    gradient.addColorStop(0, '#8ED6FF');
+    gradient.addColorStop(1, '#004CB0');
+    title.fill = gradient;
+    title.align = 'center';
+    title.setShadow(5, 5, '#8ED6FF', 5);
+    // Add Subtitle
+    subtitle = this.add.text(this.world.centerX, this.world.centerY + 200,  "Tap to Begin!");
+    subtitle.anchor.setTo(0.5);
+    subtitle.font = 'Wendy One';
+    subtitle.fontSize = 120;
+    gradient2 = subtitle.context.createLinearGradient(0, 250, 0, 0);
+    gradient2.addColorStop(0, '#8ED6FF');
+    gradient2.addColorStop(1, '#004CB0');
+    subtitle.fill = gradient2;
+    subtitle.align = 'center';
   }
 
   update() {
      this.game.input.onDown.add(this.begin, this);
 
   }//End of update()
-
-  createText(message) {
-
-    text = this.add.text(this.world.centerX, this.world.centerY, message);
-    text.anchor.setTo(0.5);
-
-    text.font = 'Veranda';
-    text.fontSize = 120;
-
-    //  x0, y0 - x1, y1
-    grd = text.context.createLinearGradient(0, 0, 0, text.canvas.height);
-    grd.addColorStop(0, '#8ED6FF');
-    grd.addColorStop(1, '#004CB3');
-    text.fill = grd;
-
-    text.align = 'center';
-    text.stroke = '#000000';
-    text.strokeThickness = 2;
-    text.setShadow(5, 5, 'rgba(0,0,0,0.5)', 5);
-
-  }
-
-
-  out() {
-
-    text.fill = grd;
-
-  }
-
-  over() {
-
-    text.fill = '#ff00ff';
-
-  }
-
 
   begin() {
     this.state.start("PlayState");
