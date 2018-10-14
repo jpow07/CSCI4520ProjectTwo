@@ -1,7 +1,3 @@
-import ControlHandler from "../utils/ControlHandler.js"
-
-
-//let cursors;
 export default class Fish extends Phaser.Sprite {
 
 
@@ -19,7 +15,7 @@ export default class Fish extends Phaser.Sprite {
     this.physicsBodyType = Phaser.Physics.ARCADE;
 
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
-    this.body.collideWorldBounds = true;
+    // this.body.collideWorldBounds = true;
 
   }
 
@@ -31,7 +27,8 @@ export default class Fish extends Phaser.Sprite {
 
   movementHandler() {
 
-    //this.body.gravity.y = 1000 + Math.random() * 100;
+    // this.body.gravity.y = 1000 + Math.random() * 100;
+    this.body.velocity.x = -150;
 
 
 

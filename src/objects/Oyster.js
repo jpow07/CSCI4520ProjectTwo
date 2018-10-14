@@ -1,5 +1,4 @@
-import ControlHandler from "../utils/ControlHandler.js"
-
+import {GameStats} from "../Helper.js"
 
 //let cursors;
 export default class Oyster extends Phaser.Sprite {
@@ -9,6 +8,8 @@ export default class Oyster extends Phaser.Sprite {
     super(game, x, y, asset, frame);
     this.create();
     this.inputEnabled = true;
+    this.input.useHandCursor = true;
+
     //this.anchor.setTo(.5, .5);
   }
 
@@ -24,12 +25,13 @@ export default class Oyster extends Phaser.Sprite {
   }
 
   update() {
-    if(this.game.isRunning)
+    if(this.game.isRunning) {
       this.movementHandler();
-      if(this.input.pointerOver()){
+      if(this.input.pointerOver()) {
         this.float();
       }
-    this.events.onInputDown.add(this.kill, this);
+      this.events.onInputDown.add(this.kill, this);
+    }
   }
 
   movementHandler() {
@@ -40,9 +42,10 @@ export default class Oyster extends Phaser.Sprite {
 
   float() {
     if(this.body.onFloor()){
-      this.body.velocity.x = -150;
+      this.body.velocity.x = -50;
       this.body.rotation -= 5;
-      this.body.velocity.y = -450;
+      this.body.velocity.y = -700;
+      this.body.gravity.y = 50;
 
 
     }
@@ -51,7 +54,12 @@ export default class Oyster extends Phaser.Sprite {
 
   kill() {
     //Weight += 5;
+    //wait
     this.destroy();
+    GameStats.weight += 100;
+    GameStats.score += 50;
+    console.log(GameStats.score);
+    console.log(GameStats.weight);
 
   }
 

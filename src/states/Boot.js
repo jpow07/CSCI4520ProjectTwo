@@ -26,7 +26,7 @@ export default class Boot extends Phaser.State {
         //need a second dellay or else fonts don't load properly first time
         this.time.events.add(Phaser.Timer.SECOND, createText, this);
       }
-      
+
       google: {
         familes: ['Veranda']
       }
@@ -39,7 +39,7 @@ export default class Boot extends Phaser.State {
 
   create() {
     console.log("Initializing PlayState");
-    this.state.start("PlayState");
+    this.state.start("MenuState");
 
   }
 

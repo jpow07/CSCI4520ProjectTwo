@@ -1,8 +1,6 @@
-import ControlHandler from "../utils/ControlHandler.js"
-
+import {GameStats} from "../Helper.js"
 
 //let cursors;
-let isRotating;
 export default class Player extends Phaser.Sprite {
 
 
@@ -12,7 +10,6 @@ export default class Player extends Phaser.Sprite {
     this.anchor.setTo(.5, .5);
     this.weight = 0;
     this.inputEnabled = true;
-    isRotating = false;
 
   }
 
@@ -29,47 +26,20 @@ export default class Player extends Phaser.Sprite {
   }
 
   update() {
-    this.weight += .5;
     if(this.game.isRunning)
      this.movementHandler();
 
      if(!this.alive){
        this.kill();
+       if(!(this.body.onFloor()))
+       this.body.rotation -= .5;
      }
     this.events.onInputDown.add(this.kill, this);
   }
 
   movementHandler() {
-    let moveLeft = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
-    let moveRight = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
-    let moveUp = this.game.input.keyboard.addKey(Phaser.Keyboard.W);
-    let moveDown = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
     this.scale.x = -1;
-    this.body.velocity.x = 500;
-
-    //this.body.gravity.y = 1000;
-
-
-  	if (moveLeft.isDown){
-  		this.body.velocity.x = -1950;
-      this.scale.x=1;
-    }
-
-  	else if (moveRight.isDown){
-  		this.body.velocity.x = 1950;
-      this.scale.x=-1;
-  	}
-  	else {
-
-  		this.animations.stop();
-  	}
-
-    if (moveUp.isDown && this.body.onFloor()) {
-      this.body.velocity.y = -850;
-
-    } else if(moveDown.isDown) {
-      this.body.velocity.y = 850;
-    }
+    this.body.velocity.x = 400;
 
   }
 
@@ -79,20 +49,13 @@ export default class Player extends Phaser.Sprite {
   }
 
   kill(){
-
+    GameStats.running = false;
     this.body.velocity.x = 0;
     this.game.isRunning = false;
-    if(!(this.body.y > this.game.height -200)){
-      isRotating = true;
-    }
     this.body.gravity.y = 600;
 
     //this.body.collideWorldBounds = false;
 
   }
 
-  rotateSprite(rotateDirection) {
-    this.body.rotation = -Math.random() * 1;
-
-  }
 }

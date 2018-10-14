@@ -2,9 +2,15 @@ import Ship from "../objects/Player.js"
 import Oyster from "../objects/Oyster.js"
 import Fish from "../objects/Fish.js"
 import LoadLevel from "../utils/LoadLevel.js"
+import {GameStats} from "../Helper.js"
 
-
-let ship, map, cursors, music, layer, oysters, fishes;
+let ship;
+let map;
+let cursors;
+let layer;
+let oysters;
+let fishes;
+let timer;
 export default class PlayState extends Phaser.State {
   constructor() {
     super();
@@ -12,17 +18,19 @@ export default class PlayState extends Phaser.State {
     this.score = 0;
     this.level = ["testMap", "testMap"];
 
+
   }
 
   create() {
     // Instantiate music and Play Music
-    music = this.game.add.audio("bgmusic", 1, true);
-    music.play();
+    // music = this.game.add.audio("bgmusic", 1, true);
+    // music.play();
 
     //Instantiate the Map
-    map = new LoadLevel(this.game, this.level[0]);
+    map = new LoadLevel(this.game, GameStats.levels[GameStats.currentLevel]);
 
     this.physics.startSystem(this.physics.ARCADE);
+
     ship = new Ship({
         game: this.game,
         x: 400,
@@ -37,16 +45,17 @@ export default class PlayState extends Phaser.State {
     //fishes = this.addFish();
 
     this.addOysters();
-
+    this.addFish();
     // Mouse Clicks on objects
      //let mouseClick = this.game.input.onDown.add(ship.itemTouched, ship);
     //let mouseClickUp = this.game.input.onUp.add(ship.itemTouched, ship);
   }
 
   update() {
-    if(ship.weight > 200){
+    if(GameStats.weight > 500){
       console.log("Death to your ship");
       ship.alive = false;
+
     }
 
   }//End of update()
@@ -71,7 +80,6 @@ export default class PlayState extends Phaser.State {
   addFish(){
     // Generate Fish
     for (var i = 0; i < 5 ; i++) {
-      let sprite = fishes.create(64 + (64 * i), 400, );
       fishes = new Fish({
         game : this.game,
         x: Math.floor(Math.random()* this.game.width) + (i * 5),
@@ -84,6 +92,8 @@ export default class PlayState extends Phaser.State {
 
   }//End of addFish()
 
-
+  pauseGame(){
+    this.game.isRunning = false;
+  }
 
 }//End of PlayState Class
