@@ -19,7 +19,6 @@ export default class Player extends Phaser.Sprite {
     //this.animations.add('left', [0,1,2,3], 10, false);
     this.enableBody = true;
     this.physicsBodyType = Phaser.Physics.ARCADE;
-
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     this.body.collideWorldBounds = true;
 

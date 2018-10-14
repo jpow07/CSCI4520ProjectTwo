@@ -59,11 +59,9 @@ export default class Oyster extends Phaser.Sprite {
   }
 
   kill() {
-      this.destroy(this);
-      GameStats.weight += 100;
+      this.destroy();
+      GameStats.weight += 25;
       GameStats.score += 50;
-      console.log(GameStats.score);
-      console.log(GameStats.weight);
   }// End of kill()
 
 }
