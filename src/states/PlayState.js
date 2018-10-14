@@ -4,6 +4,7 @@ import Fish from "../objects/Fish.js"
 import LoadLevel from "../utils/LoadLevel.js"
 import {GameStats} from "../Helper.js"
 import HUD from "../objects/HUD.js"
+import Seaweed from "../objects/Seaweed.js"
 
 let ship;
 let map;
@@ -14,6 +15,8 @@ let fishes;
 let timer;
 let hud;
 let oceanWave;
+let seaweed;
+
 export default class PlayState extends Phaser.State {
   constructor() {
     super();
@@ -26,13 +29,13 @@ export default class PlayState extends Phaser.State {
   create() {
     // Start Physics for game
     this.physics.startSystem(this.physics.ARCADE);
-    
+
     // Set pointer specifications, Number of pointers and size of pointer box
     this.input.maxPointers = 1;
     this.input.circle = 44;
 
     // Play Ocean Wave effects
-    oceanWave = this.game.add.audio("ocean", .2, true);
+    oceanWave = this.game.add.audio("ocean", .1, true);
     oceanWave.play();
 
     //Instantiate the Map
@@ -49,11 +52,15 @@ export default class PlayState extends Phaser.State {
         asset: "ship"
     });
 
+
+
     this.add.existing(ship);
     this.physics.enable(ship, this.physics.ARCADE);
     // Camera to Follow ship
     this.camera.follow(ship, Phaser.Camera.FOLLOW_LOCKON);
 
+
+    this.addSeaweed();
     this.addOysters();
     this.addFish();
   }
@@ -62,7 +69,10 @@ export default class PlayState extends Phaser.State {
     if(GameStats.weight > GameStats.weightAllowed){
       console.log("Death to your ship");
       ship.alive = false;
+      ship.kill();
       this.input.enabled = false;
+      this.isRunning = false;
+
     }
 
   }//End of update()
@@ -99,6 +109,18 @@ export default class PlayState extends Phaser.State {
       }
 
   }//End of addFish()
+
+  addSeaweed() {
+    for (var i = 0; i < 5 ; i++) {
+      seaweed = new Seaweed({
+        game : this.game,
+        x: 100 + (i * 500),
+        y: this.game.height-180,
+        asset: "seaweed"
+      });
+      this.add.existing(seaweed);
+    }
+  }
 
   pauseGame(){
     this.game.isRunning = false;

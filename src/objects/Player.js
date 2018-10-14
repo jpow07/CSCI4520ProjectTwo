@@ -1,6 +1,7 @@
 import {GameStats} from "../Helper.js"
 
-//let cursors;
+let explode;
+let timecheck;
 export default class Player extends Phaser.Sprite {
 
 
@@ -21,6 +22,7 @@ export default class Player extends Phaser.Sprite {
     this.physicsBodyType = Phaser.Physics.ARCADE;
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     this.body.collideWorldBounds = true;
+    explode = this.game.add.audio("explosion", 1, false);
 
   }
 
@@ -28,13 +30,11 @@ export default class Player extends Phaser.Sprite {
     if(this.game.isRunning)
      this.movementHandler();
 
-     if(!this.alive){
-       this.kill();
-       if(!(this.body.onFloor()))
-       this.body.rotation -= .5;
+     if(!this.alive && !this.body.onFloor()){
+       this.body.rotation -= .3;
      }
-    this.events.onInputDown.add(this.kill, this);
   }
+
 
   movementHandler() {
     this.scale.x = -1;
@@ -42,19 +42,18 @@ export default class Player extends Phaser.Sprite {
 
   }
 
-  clickedSprite(){
-    this.body.velocity.y = -150;
-
-  }
 
   kill(){
-    GameStats.running = false;
+    this.explosion();
     this.body.velocity.x = 0;
     this.game.isRunning = false;
     this.body.gravity.y = 600;
 
-    //this.body.collideWorldBounds = false;
+    // GameStats.running = false;
 
   }
 
+  explosion(){
+    explode.play();
+  }
 }

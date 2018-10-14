@@ -23,7 +23,9 @@ export default class Oyster extends Phaser.Sprite {
     if(this.body.embedded){
       this.x += 100;
     }
-    collect = this.game.add.audio("collect", .5, false);
+    swipe = this.game.add.audio("swipeOyster", 1, false);
+    collect = this.game.add.audio("collectOyster", 1, false);
+    
   }// End of create()
 
 
@@ -34,7 +36,7 @@ export default class Oyster extends Phaser.Sprite {
 
       if(this.input.pointerOver()) {
         this.float();
-        // swipe.play();
+        swipe.play();
       }
       if(!this.body.onFloor()){
         this.events.onInputDown.add(this.kill, this);

@@ -1,5 +1,5 @@
 import {GameStats} from "../Helper.js"
-
+let collect;
 export default class Fish extends Phaser.Sprite {
 
 
@@ -20,6 +20,7 @@ export default class Fish extends Phaser.Sprite {
 
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     // this.body.collideWorldBounds = true;
+    collect = this.game.add.audio("collectFish", 1, false);
 
   }
 
@@ -41,6 +42,7 @@ export default class Fish extends Phaser.Sprite {
   }
 
   kill() {
+    collect.play();
     GameStats.weight += 100;
     this.destroy();
   }
