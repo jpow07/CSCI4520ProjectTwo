@@ -2,6 +2,7 @@ import {GameStats} from "../Helper.js"
 
 let collect;
 let swipe;
+
 export default class Oyster extends Phaser.Sprite {
 
 
@@ -23,8 +24,6 @@ export default class Oyster extends Phaser.Sprite {
       this.x += 100;
     }
     collect = this.game.add.audio("collect", .5, false);
-    swipe = this.game.add.audio("swipe", 1, false);
-
   }
 
 
