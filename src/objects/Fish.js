@@ -1,3 +1,5 @@
+import {GameStats} from "../Helper.js"
+
 export default class Fish extends Phaser.Sprite {
 
 
@@ -5,6 +7,8 @@ export default class Fish extends Phaser.Sprite {
     super(game, x, y, asset, frame);
     this.create();
     //this.anchor.setTo(.5, .5);
+    this.inputEnabled = true;
+    this.input.useHandCursor = true;
   }
 
   create() {
@@ -20,20 +24,25 @@ export default class Fish extends Phaser.Sprite {
   }
 
   update() {
-    if(this.game.isRunning)
+
+    if(this.game.isRunning) {
       this.movementHandler();
 
+      if(!this.body.onFloor()){
+        this.events.onInputDown.add(this.kill, this);
+      }
+    }
   }
 
   movementHandler() {
 
-    // this.body.gravity.y = 1000 + Math.random() * 100;
-    this.body.velocity.x = -150;
-
-
-
+    this.body.velocity.x = -Math.random() * 250;
+    this.body.rotation = Math.random() * 100 % 2;
   }
 
-
+  kill() {
+    GameStats.weight += 100;
+    this.destroy();
+  }
 
 }

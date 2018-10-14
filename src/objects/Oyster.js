@@ -1,6 +1,6 @@
 import {GameStats} from "../Helper.js"
 
-//let cursors;
+let isAllowed = true;
 export default class Oyster extends Phaser.Sprite {
 
 
@@ -15,52 +15,55 @@ export default class Oyster extends Phaser.Sprite {
 
   create() {
 
-    //this.animations.add('right', [5,6,7,8],10, false);
-    //this.animations.add('left', [0,1,2,3], 10, false);
-    this.enableBody = true;
-    this.physicsBodyType = Phaser.Physics.ARCADE;
-
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
+    this.enableBody = true;
     this.body.collideWorldBounds = true;
+    if(this.body.embedded){
+      this.x += 100;
+    }
   }
 
   update() {
+
     if(this.game.isRunning) {
       this.movementHandler();
-      if(this.input.pointerOver()) {
+
+      if(this.input.pointerOver() && isAllowed) {
         this.float();
       }
-      this.events.onInputDown.add(this.kill, this);
+      if(!this.body.onFloor()){
+        this.events.onInputDown.add(this.kill, this);
+      }
     }
   }
 
   movementHandler() {
+    this.body.velocity.x = 0;
+    this.body.gravity.y = 1000;
+    if(this.body.y < (this.game.height - 100)){
+      this.rotate();
+    }
 
-    this.body.gravity.y = 1000 + Math.random() * 100;
+  }
 
+  rotate() {
+    this.body.rotation -= 7;
   }
 
   float() {
     if(this.body.onFloor()){
-      this.body.velocity.x = -50;
-      this.body.rotation -= 5;
-      this.body.velocity.y = -700;
-      this.body.gravity.y = 50;
-
-
+      this.body.velocity.x -= 50;
+      this.body.velocity.y -= 500;
     }
 
   }
 
   kill() {
-    //Weight += 5;
-    //wait
-    this.destroy();
-    GameStats.weight += 100;
-    GameStats.score += 50;
-    console.log(GameStats.score);
-    console.log(GameStats.weight);
-
-  }
+      this.destroy(this);
+      GameStats.weight += 100;
+      GameStats.score += 50;
+      console.log(GameStats.score);
+      console.log(GameStats.weight);
+  }// End of kill()
 
 }

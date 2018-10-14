@@ -18,13 +18,11 @@ export default class PlayState extends Phaser.State {
     this.score = 0;
     this.level = ["testMap", "testMap"];
 
-
   }
 
   create() {
-    // Instantiate music and Play Music
-    // music = this.game.add.audio("bgmusic", 1, true);
-    // music.play();
+    this.input.maxPointers = 1;
+    this.input.circle = 44;
 
     //Instantiate the Map
     map = new LoadLevel(this.game, GameStats.levels[GameStats.currentLevel]);
@@ -41,20 +39,15 @@ export default class PlayState extends Phaser.State {
     this.add.existing(ship);
     this.physics.enable(ship, this.physics.ARCADE);
 
-    //fishes = this.add.group();
-    //fishes = this.addFish();
-
     this.addOysters();
     this.addFish();
-    // Mouse Clicks on objects
-     //let mouseClick = this.game.input.onDown.add(ship.itemTouched, ship);
-    //let mouseClickUp = this.game.input.onUp.add(ship.itemTouched, ship);
   }
 
   update() {
     if(GameStats.weight > 500){
       console.log("Death to your ship");
       ship.alive = false;
+      this.input.enabled = false;
 
     }
 
@@ -83,7 +76,7 @@ export default class PlayState extends Phaser.State {
       fishes = new Fish({
         game : this.game,
         x: Math.floor(Math.random()* this.game.width) + (i * 5),
-        y: Math.floor(this.game.height - (Math.random() * 250)),
+        y: Math.floor(this.game.height - (Math.random() * 250) - 125),
         asset: "fish",
         frame: 0
       });
