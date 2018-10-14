@@ -6,7 +6,8 @@ export let GameStats = {
   weight : 0,
   weightAllowed : 500,
   oysterCount : 30,
-  fishCount : 20
+  fishCount : 20,
+  seaweedCount : 5
 
 };
 

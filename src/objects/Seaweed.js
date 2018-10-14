@@ -9,7 +9,7 @@ export default class Seaweed extends Phaser.Sprite {
 
   create() {
 
-    animation = this.animations.add('seaweed', [0,1,2], 3, true);
+    animation = this.animations.add('seaweed', [0,1,2], 4, true);
     this.enableBody = true;
     this.physicsBodyType = Phaser.Physics.ARCADE;
     this.scale.setTo(2, 2);

@@ -111,7 +111,7 @@ export default class PlayState extends Phaser.State {
   }//End of addFish()
 
   addSeaweed() {
-    for (var i = 0; i < 5 ; i++) {
+    for (var i = 0; i < GameStats.seaweedCount ; i++) {
       seaweed = new Seaweed({
         game : this.game,
         x: 100 + (i * 500),
