@@ -36,7 +36,6 @@ export default class HUD extends Phaser.Sprite {
     score.setText("Score: " + GameStats.score);
     weight.setText("Weight: " + GameStats.weight);
 
-
   }
 
 }

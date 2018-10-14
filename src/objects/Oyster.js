@@ -1,6 +1,6 @@
 import {GameStats} from "../Helper.js"
 
-let isAllowed = true;
+let collectSound;
 export default class Oyster extends Phaser.Sprite {
 
 
@@ -21,6 +21,7 @@ export default class Oyster extends Phaser.Sprite {
     if(this.body.embedded){
       this.x += 100;
     }
+    // collectSound = this.game.add.audio("collect");
   }
 
   update() {
@@ -28,7 +29,7 @@ export default class Oyster extends Phaser.Sprite {
     if(this.game.isRunning) {
       this.movementHandler();
 
-      if(this.input.pointerOver() && isAllowed) {
+      if(this.input.pointerOver()) {
         this.float();
       }
       if(!this.body.onFloor()){
@@ -57,11 +58,15 @@ export default class Oyster extends Phaser.Sprite {
     }
 
   }
+  start() {
 
+
+  }
   kill() {
-      this.destroy();
-      GameStats.weight += 25;
-      GameStats.score += 50;
+    // collectSound.play();
+    this.destroy();
+    GameStats.weight += 25;
+    GameStats.score += 50;
   }// End of kill()
 
 }

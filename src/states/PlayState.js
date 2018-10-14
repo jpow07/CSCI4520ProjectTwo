@@ -30,8 +30,8 @@ export default class PlayState extends Phaser.State {
     map = new LoadLevel(this.game, GameStats.levels[GameStats.currentLevel]);
 
     this.physics.startSystem(this.physics.ARCADE);
-    hud = new HUD(this.game);
 
+    hud = new HUD(this.game);
     this.add.existing(hud);
 
     ship = new Ship({
