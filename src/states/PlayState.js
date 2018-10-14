@@ -24,14 +24,20 @@ export default class PlayState extends Phaser.State {
   }
 
   create() {
+    // Start Physics for game
+    this.physics.startSystem(this.physics.ARCADE);
+    
+    // Set pointer specifications, Number of pointers and size of pointer box
     this.input.maxPointers = 1;
     this.input.circle = 44;
+
+    // Play Ocean Wave effects
     oceanWave = this.game.add.audio("ocean", .2, true);
     oceanWave.play();
+
     //Instantiate the Map
     map = new LoadLevel(this.game, GameStats.levels[GameStats.currentLevel]);
 
-    this.physics.startSystem(this.physics.ARCADE);
 
     hud = new HUD(this.game);
     this.add.existing(hud);
@@ -53,7 +59,7 @@ export default class PlayState extends Phaser.State {
   }
 
   update() {
-    if(GameStats.weight > 500){
+    if(GameStats.weight > GameStats.weightAllowed){
       console.log("Death to your ship");
       ship.alive = false;
       this.input.enabled = false;
@@ -65,7 +71,7 @@ export default class PlayState extends Phaser.State {
   addOysters() {
 
     // Generate Oysters
-    for (var i = 0; i < 30 ; i++) {
+    for (var i = 0; i < GameStats.oysterCount; i++) {
       oysters = new Oyster({
         game : this.game,
         x: Math.floor(Math.random()* this.game.width) + (i * 25),
@@ -75,12 +81,13 @@ export default class PlayState extends Phaser.State {
       });
       this.add.existing(oysters);
     }
+    GameStats.weightAllowed = GameStats.oysterCount * 25;
 
   } //End of addOysters()
 
   addFish(){
     // Generate Fish
-    for (var i = 0; i < 20 ; i++) {
+    for (var i = 0; i < GameStats.fishCount; i++) {
       fishes = new Fish({
         game : this.game,
         x: Math.floor(Math.random()* this.game.width* 2) + (i * 5),

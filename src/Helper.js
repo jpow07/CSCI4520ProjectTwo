@@ -2,8 +2,11 @@
 export let GameStats = {
   currentLevel : 0,
   levels : ["testMap", "testMap"],
+  score : 0,
   weight : 0,
-  score : 0
+  weightAllowed : 500,
+  oysterCount : 30,
+  fishCount : 20
 
 };
 

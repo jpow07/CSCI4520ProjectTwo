@@ -12,7 +12,7 @@ export default class MenuState extends Phaser.State {
 
   create() {
     // Start Music
-    music = this.game.add.audio("bgmusic", 1, true);
+    music = this.game.add.audio("bgmusic", .5, true);
     music.play();
 
     this.game.stage.setBackgroundColor(0x000000);

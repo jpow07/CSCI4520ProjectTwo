@@ -13,7 +13,7 @@ export default class Oyster extends Phaser.Sprite {
     this.input.useHandCursor = true;
 
     //this.anchor.setTo(.5, .5);
-  }
+  }// End of Consturctor
 
   create() {
 
@@ -24,7 +24,7 @@ export default class Oyster extends Phaser.Sprite {
       this.x += 100;
     }
     collect = this.game.add.audio("collect", .5, false);
-  }
+  }// End of create()
 
 
   update() {
@@ -34,13 +34,13 @@ export default class Oyster extends Phaser.Sprite {
 
       if(this.input.pointerOver()) {
         this.float();
-        swipe.play();
+        // swipe.play();
       }
       if(!this.body.onFloor()){
         this.events.onInputDown.add(this.kill, this);
       }
     }
-  }
+  }// End of update()
 
   movementHandler() {
     this.body.velocity.x = 0;
@@ -49,11 +49,11 @@ export default class Oyster extends Phaser.Sprite {
       this.rotate();
     }
 
-  }
+  }// End of movementHandler()
 
   rotate() {
     this.body.rotation -= 7;
-  }
+  }// End of Rotate()
 
   float() {
     if(this.body.onFloor()){
@@ -61,11 +61,9 @@ export default class Oyster extends Phaser.Sprite {
       this.body.velocity.y -= 500;
     }
 
-  }
-  start() {
+  }// End of float()
 
 
-  }
   kill() {
     collect.play();
     this.destroy();
