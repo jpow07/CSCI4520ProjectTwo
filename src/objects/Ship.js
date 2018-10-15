@@ -2,7 +2,8 @@ import {GameStats} from "../Helper.js"
 
 let explode;
 let timecheck;
-export default class Player extends Phaser.Sprite {
+let returnHome = false;
+export default class Ship extends Phaser.Sprite {
 
 
   constructor({game, x, y, asset}) {
@@ -27,7 +28,7 @@ export default class Player extends Phaser.Sprite {
   }
 
   update() {
-    if(this.game.isRunning)
+    if(this.game.isRunning && !GameStats.isFinished)
      this.movementHandler();
 
      if(!this.alive && !this.body.onFloor()){
@@ -53,7 +54,34 @@ export default class Player extends Phaser.Sprite {
 
   }
 
+  returnToPort() {
+    this.body.collideWorldBounds = false;
+    GameStats.isFinished = true;
+    if(this.x > 2*(this.game.world.centerX)){
+      this.returnHome();
+    }else if(this.x < 2*(this.game.world.centerX) && !returnHome){
+      this.continueToEnd();
+    }else if(this.x < 0){
+      this.game.state.start("Splash");
+    }
+
+  }
+
   explosion(){
     explode.play();
+  }
+
+  returnHome(){
+
+    console.log("return home");
+    this.scale.x = 1;
+    this.body.velocity.x = -1500;
+    returnHome = true;
+
+  }
+  continueToEnd(){
+    console.log("Continue to end");
+    this.body.velocity.x = 800;
+
   }
 }

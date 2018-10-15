@@ -1,4 +1,4 @@
-import Ship from "../objects/Player.js"
+import Ship from "../objects/Ship.js"
 import Oyster from "../objects/Oyster.js"
 import Fish from "../objects/Fish.js"
 import LoadLevel from "../utils/LoadLevel.js"
@@ -16,6 +16,7 @@ let timer;
 let hud;
 let oceanWave;
 let seaweed;
+let gameComplete;
 
 export default class PlayState extends Phaser.State {
   constructor() {
@@ -72,7 +73,8 @@ export default class PlayState extends Phaser.State {
       ship.kill();
       this.input.enabled = false;
       this.isRunning = false;
-
+    } else if(GameStats.oysterCount === GameStats.oystersCollected) {
+      ship.returnToPort()
     }
 
   }//End of update()

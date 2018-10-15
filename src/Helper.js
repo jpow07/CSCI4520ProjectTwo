@@ -1,15 +1,16 @@
 // Keep track of Game Stats
 export let GameStats = {
-  time : 0,
+  isFinished : false,
   currentLevel : 0,
   levels : ["testMap", "testMap"],
   score : 0,
   weight : 0,
   weightAllowed : 500,
-  oysterWeight : 25,
   fishWeight : 100,
-  oysterCount : 30,
   fishCount : 20,
+  oysterWeight : 25,
+  oysterCount : 1,
+  oystersCollected: 0,
   seaweedCount : 5
 
 };

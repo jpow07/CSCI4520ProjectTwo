@@ -45,7 +45,7 @@ export default class MenuState extends Phaser.State {
   }//End of update()
 
   begin() {
-    this.state.start("PlayState");
+    this.state.start("Splash");
   }
 
 }//End of MenuState Class

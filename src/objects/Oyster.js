@@ -25,7 +25,7 @@ export default class Oyster extends Phaser.Sprite {
     }
     swipe = this.game.add.audio("swipeOyster", 1, false);
     collect = this.game.add.audio("collectOyster", 1, false);
-    
+
   }// End of create()
 
 
@@ -71,6 +71,7 @@ export default class Oyster extends Phaser.Sprite {
     this.destroy();
     GameStats.weight += 25;
     GameStats.score += 50;
+    GameStats.oystersCollected++;
   }// End of kill()
 
 }
