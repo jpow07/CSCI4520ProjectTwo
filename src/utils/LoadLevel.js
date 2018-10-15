@@ -17,7 +17,7 @@ export default class LoadLevel extends Phaser.Tilemap {
       mylayer.background = this.createLayer("sky");
       mylayer.midground = this.createLayer("water");
       mylayer.foreground = this.createLayer("sand");
-
+      mylayer.background.resizeWorld();
   }
 
 }
