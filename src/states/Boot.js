@@ -7,10 +7,9 @@ export default class Boot extends Phaser.State {
   }
 
   preload() {
-    // Load Tilemap
-    this.load.tilemap("testMap", "assets/data/testmap.json", null, Phaser.Tilemap.TILED_JSON);
-    // Load Tileset
-    this.load.image("tiles", "assets/images/tiles.png");
+    // Load Tilemap and Tileset
+    this.load.tilemap("level", "assets/data/level.json", null, Phaser.Tilemap.TILED_JSON);
+    this.load.image("tiles", "assets/images/tileset.png");
 
     // Load Ship
     this.load.spritesheet("ship", "assets/images/ship.png", 407,196);

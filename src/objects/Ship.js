@@ -12,9 +12,11 @@ export default class Ship extends Phaser.Sprite {
     this.anchor.setTo(.5, .5);
     this.weight = 0;
     this.inputEnabled = true;
+
   }
 
   create() {
+    
     this.enableBody = true;
     this.physicsBodyType = Phaser.Physics.ARCADE;
     this.game.physics.enable(this, Phaser.Physics.ARCADE);

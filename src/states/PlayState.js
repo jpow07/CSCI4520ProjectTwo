@@ -23,7 +23,7 @@ export default class PlayState extends Phaser.State {
     super();
     console.log("In the PlayState");
     this.score = 0;
-    this.level = ["testMap", "testMap"];
+    this.level = ["levelOne"];
 
   }
 
@@ -40,16 +40,16 @@ export default class PlayState extends Phaser.State {
     oceanWave.play();
 
     //Instantiate the Map
-    map = new LoadLevel(this.game, GameStats.levels[GameStats.currentLevel]);
-
+    console.log("Load Map");
+    map = new LoadLevel(this.game, "level");
 
     hud = new HUD(this.game);
     this.add.existing(hud);
 
     ship = new Ship({
         game: this.game,
-        x: 400,
-        y: 680,
+        x: 100,
+        y: 260,
         asset: "ship"
     });
 
