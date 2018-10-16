@@ -74,7 +74,7 @@ export default class PlayState extends Phaser.State {
       ship.kill();
       this.input.enabled = false;
       this.isRunning = false;
-    } else if(/*GameStats.oysterCount/4*/ 1 === GameStats.oystersCollected ) {
+    } else if(GameStats.oysterCount/4  === GameStats.oystersCollected ) {
       GameStats.isFinished = true;
       ship.returnToPort()
     }
