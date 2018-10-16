@@ -108,6 +108,7 @@ export default class Ship extends Phaser.Sprite {
     this.body.velocity.x = 0;
     this.game.isRunning = false;
     this.body.gravity.y = 600;
+    this.game.state.start("Lose");
   }
 
   returnToPort() {

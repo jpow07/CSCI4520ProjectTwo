@@ -2,6 +2,7 @@ import BootState from "./states/Boot.js"
 import SplashState from "./states/SplashState.js"
 import PlayState from "./states/PlayState.js"
 import MenuState from "./states/MenuState.js"
+import LoseState from "./states/LoseState.js"
 
 
 
@@ -26,6 +27,7 @@ class Game extends Phaser.Game {
     this.state.add("MenuState", MenuState, false );
     this.state.add("Splash", SplashState, false);
     this.state.add("PlayState", PlayState, false );
+    this.state.add("Lose", LoseState, false);
 
     this.state.start("Boot");
   }
