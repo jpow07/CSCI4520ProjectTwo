@@ -61,7 +61,7 @@ export default class Oyster extends Phaser.Sprite {
   float() {
     if(this.body.onFloor()){
       this.body.velocity.x -= 50;
-      this.body.velocity.y -= 500;
+      this.body.velocity.y -= 1000;
     }
 
   }// End of float()

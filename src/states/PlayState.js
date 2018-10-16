@@ -64,7 +64,8 @@ export default class PlayState extends Phaser.State {
 
     this.addSeaweed();
     this.addOysters();
-    //this.addFish();
+    this.game.time.events.repeat(Phaser.Timer.SECOND * 2, 100, this.addFish, this);
+
   }
 
   update() {
@@ -79,6 +80,7 @@ export default class PlayState extends Phaser.State {
       ship.returnToPort()
     }
 
+
   }//End of update()
 
 
@@ -88,8 +90,8 @@ export default class PlayState extends Phaser.State {
     for (var i = 0; i < GameStats.oysterCount; i++) {
       oysters = new Oyster({
         game : this.game,
-        x: Math.floor(Math.random()* this.game.world.width) + (i * 25),
-        y: this.game.height - 70,
+        x: Math.floor(Math.random() * this.game.world.width) + 500,
+        y: this.game.height - 90,
         asset: "oyster",
         frame: Math.floor(Math.random()*11)
       });
@@ -101,16 +103,16 @@ export default class PlayState extends Phaser.State {
 
   addFish(){
     // Generate Fish
-    for (var i = 0; i < GameStats.fishCount; i++) {
+    for (var i = 0; i < GameStats.fishCount ; i++) {
       fishes = new Fish({
         game : this.game,
-        x: Math.floor(Math.random()* this.game.world.width * 1.10) + (i * 5),
-        y: Math.floor(this.game.height - (Math.random() * 250) - 125),
+        x: ship.x + 2000 ,
+        y: Math.floor(this.game.height - (Math.random() * 550) - 125),
         asset: "fish",
         frame: 0
       });
       this.add.existing(fishes);
-      }
+    }
 
   }//End of addFish()
 
