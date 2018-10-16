@@ -18,7 +18,7 @@ export default class Fish extends Phaser.Sprite {
     this.physicsBodyType = Phaser.Physics.ARCADE;
 
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
-    collect = this.game.add.audio("collectFish", 1, false);
+    // collect = this.game.add.audio("collectFish", 1, false);
 
   }
 
@@ -33,8 +33,7 @@ export default class Fish extends Phaser.Sprite {
   }
 
   movementHandler() {
-
-    this.body.velocity.x = -Math.random() * 250;
+    this.body.velocity.x = -Math.random() * 450;
     this.body.rotation = Math.random() * 100 % 2;
   }
 

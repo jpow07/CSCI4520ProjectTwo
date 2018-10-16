@@ -42,7 +42,7 @@ export default class Ship extends Phaser.Sprite {
 
 
   kill(){
-    this.explosion();
+    expolde.play()
     this.body.velocity.x = 0;
     this.game.isRunning = false;
     this.body.gravity.y = 600;
@@ -51,17 +51,13 @@ export default class Ship extends Phaser.Sprite {
   returnToPort() {
     this.body.collideWorldBounds = false;
     GameStats.isFinished = true;
-    if(this.x > 4000/*(this.game.world.centerX)*/){
+    if(this.x > 4400){
       this.returnHome();
     }else if(!returnHome){
       this.continueToEnd();
     }else if(this.x < 500){
       this.game.state.start("Splash");
     }
-  }
-
-  explosion(){
-    explode.play();
   }
 
   returnHome(){
