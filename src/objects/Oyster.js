@@ -73,7 +73,7 @@ export default class Oyster extends Phaser.Sprite {
     GameStats.weight += 25;
     GameStats.score += 50;
     GameStats.oystersCollected++;
-      console.log("Oyster Count: " + GameStats.oystersCollected);
+      // console.log("Oyster Count: " + GameStats.oystersCollected);
   }// End of kill()
 
 }

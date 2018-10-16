@@ -16,12 +16,3 @@ export let GameStats = {
   seaweedCount : 30
 
 };
-/*
-  // Required for Google Webfonts
-  export var WebFontConfig = {
-
-    google: {
-      families: ['Indie Flower', 'Oribitron', 'Wendy One']
-    }
-  };
-*/

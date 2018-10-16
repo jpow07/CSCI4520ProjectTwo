@@ -29,6 +29,7 @@ export default class Fish extends Phaser.Sprite {
       if(!this.body.onFloor()){
         this.events.onInputDown.add(this.kill, this);
       }
+      
     }
   }
 
@@ -42,6 +43,7 @@ export default class Fish extends Phaser.Sprite {
     GameStats.fishCollected++;
     GameStats.weight += GameStats.fishWeight;
     this.destroy();
+    console.log(GameStats.fishCollected);
 
   }
 

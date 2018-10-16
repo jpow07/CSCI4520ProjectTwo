@@ -6,6 +6,10 @@ let timecheck;
 let returnHome = false;
 let timer;
 let hud;
+let holdDuration = 85;
+let startTimer;
+let endTimer;
+let buttonPressed = false;
 export default class Ship extends Phaser.Sprite {
 
 
@@ -36,7 +40,14 @@ export default class Ship extends Phaser.Sprite {
      if(!this.alive && !this.body.onFloor()){
        this.body.rotation -= .3;
      }
-     console.log(GameStats.weight)
+     if(this.game.input.activePointer.isDown){
+       this.isDown();
+     }
+     if(buttonPressed && this.game.input.activePointer.isUp){
+       this.isUp();
+     }
+
+
      if(GameStats.weight > 400){
        this.frame = 3;
      }else if(GameStats.weight > 300){
@@ -52,6 +63,21 @@ export default class Ship extends Phaser.Sprite {
 
   }
 
+  isDown(){
+    startTimer = this.game.time.now;
+    buttonPressed = true;
+  }
+
+  isUp(){
+    endTimer = this.game.time.now;
+    console.log(endTimer - startTimer);
+    if((endTimer - startTimer) > holdDuration){
+      this.dropFish()
+    }
+    buttonPressed = false;
+    endTimer = 0;
+  }
+
   startTimer(){
     timer = this.game.time.create(false);
     timer.loop(2000, this.dropFish, this);
@@ -65,6 +91,7 @@ export default class Ship extends Phaser.Sprite {
   dropFish(){
   	if(GameStats.fishCollected > 0){
   		GameStats.fishCollected--;
+      GameStats.weight -= GameStats.fishWeight;
   	}
   	console.log("Fish: " + GameStats.fishCollected);
   }
