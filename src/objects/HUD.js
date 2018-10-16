@@ -25,9 +25,9 @@ export default class HUD extends Phaser.Sprite {
   }
 
   update() {
-    weight.x += 2;
-    score.x += 2;
-    gameOver.x += 2;
+    weight.x += 3;
+    score.x += 3;
+    gameOver.x += 3;
     if(this.game.isRunning) {
       score.setText("Score: " + GameStats.score);
       if(GameStats.weight > (GameStats.allowedWeight - 150)){

@@ -6,7 +6,7 @@ let timecheck;
 let returnHome = false;
 let timer;
 let hud;
-let holdDuration = 85;
+let holdDuration = 84;
 let startTimer;
 let endTimer;
 let buttonPressed = false;
@@ -43,7 +43,7 @@ export default class Ship extends Phaser.Sprite {
      if(this.game.input.activePointer.isDown){
        this.isDown();
      }
-     if(buttonPressed && this.game.input.activePointer.isUp){
+     if(this.game.input.activePointer.isUp && buttonPressed){
        this.isUp();
      }
 
