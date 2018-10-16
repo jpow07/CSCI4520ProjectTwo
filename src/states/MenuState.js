@@ -17,7 +17,7 @@ export default class MenuState extends Phaser.State {
 
     this.game.stage.setBackgroundColor(0x000000);
     // Add Title
-    title = this.add.text(1200, 500, "~ Oyster Hunt ~");
+    title = this.add.text(1200, 500, "~ Oystervation ~");
     title.anchor.setTo(0.5);
     title.font = 'Wendy One';
     title.fontSize = 200;

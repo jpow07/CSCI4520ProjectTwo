@@ -99,7 +99,7 @@ export default class Ship extends Phaser.Sprite {
 
   movementHandler() {
     this.scale.x = -1;
-    this.body.velocity.x = 400;
+    this.body.velocity.x = 250;
   }
 
 
