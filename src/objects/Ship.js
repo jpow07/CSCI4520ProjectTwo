@@ -33,15 +33,16 @@ export default class Ship extends Phaser.Sprite {
        this.body.rotation -= .3;
      }
      console.log(GameStats.weight)
-     if(GameStats.weight > 300){
-       this.frame = 4;
-     }else if(GameStats.weight > 200){
+     if(GameStats.weight > 400){
        this.frame = 3;
-     }else if(GameStats.weight > 100){
+     }else if(GameStats.weight > 300){
        this.frame = 2;
-     }else{
+     }else if(GameStats.weight > 200){
        this.frame = 1;
+     }else{
+       this.frame = 0;
      }
+
   }
 
 
