@@ -4,6 +4,7 @@ import SplashState from "../states/SplashState.js"
 let explode;
 let timecheck;
 let returnHome = false;
+let timer;
 export default class Ship extends Phaser.Sprite {
 
 
@@ -13,6 +14,7 @@ export default class Ship extends Phaser.Sprite {
     this.anchor.setTo(.5, .5);
     this.weight = 0;
     this.inputEnabled = true;
+    this.input.useHandCursor = true;
 
   }
 
@@ -23,6 +25,7 @@ export default class Ship extends Phaser.Sprite {
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     this.body.collideWorldBounds = true;
     explode = this.game.add.audio("explosion", 1, false);
+
   }
 
   update() {
@@ -43,6 +46,26 @@ export default class Ship extends Phaser.Sprite {
        this.frame = 0;
      }
 
+ 	this.events.onInputDown.add(this.startTimer, this);
+ 	this.events.onInputUp.add(this.endTimer, this);
+
+  }
+
+  startTimer(){
+    timer = this.game.time.create(false);
+    timer.loop(2000, this.dropFish, this);
+    timer.start();
+  }
+
+  endTimer(){
+  	timer.stop();
+  }
+
+  dropFish(){
+  	if(GameStats.fishCollected > 0){
+  		GameStats.fishCollected--;
+  	}
+  	console.log("Fish: " + GameStats.fishCollected);
   }
 
 
