@@ -17,8 +17,8 @@ export default class HUD extends Phaser.Sprite {
   create() {
     this.fixedToCamera = true;
 
-    score = this.createText("black", "Orbitron", 60, this.game.world.centerX - 800, 100);
-    weight = this.createText("black", "Orbitron", 60, this.game.world.centerX + 800, 100);
+    score = this.createText("black", "Orbitron", 60, this.game.camera.centerX - 800, 100);
+    weight = this.createText("black", "Orbitron", 60, this.game.camera.centerX + 800, 100);
     gameOver = this.createText("black", "Orbitron", 190, this.game.world.centerX, this.game.world.centerY);
 
   }

@@ -1,5 +1,5 @@
 
-let mylayer;
+let layer;
 export default class LoadLevel extends Phaser.Tilemap {
 
   constructor(game, mapKey){
@@ -8,16 +8,8 @@ export default class LoadLevel extends Phaser.Tilemap {
 
     this.addTilesetImage("tileset","tiles");
 
-      mylayer = function() {
-        let background;
-        let midground;
-        let foreground;
-      }
-
-      mylayer.background = this.createLayer("sky");
-      mylayer.midground = this.createLayer("water");
-      mylayer.foreground = this.createLayer("sand");
-      mylayer.background.resizeWorld();
+    layer = this.createLayer(0);
+    layer.resizeWorld();
   }
 
 }

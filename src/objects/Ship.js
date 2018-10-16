@@ -16,7 +16,7 @@ export default class Ship extends Phaser.Sprite {
   }
 
   create() {
-    
+
     this.enableBody = true;
     this.physicsBodyType = Phaser.Physics.ARCADE;
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
@@ -50,7 +50,7 @@ export default class Ship extends Phaser.Sprite {
   returnToPort() {
     this.body.collideWorldBounds = false;
     GameStats.isFinished = true;
-    if(this.x > 2*(this.game.world.centerX)){
+    if(this.x > (this.game.world.centerX)){
       this.returnHome();
     }else if(this.x < 2*(this.game.world.centerX) && !returnHome){
       this.continueToEnd();

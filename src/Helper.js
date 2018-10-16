@@ -9,14 +9,17 @@ export let GameStats = {
   fishWeight : 100,
   fishCount : 20,
   oysterWeight : 25,
-  oysterCount : 1,
+  oysterCount : 100,
   oystersCollected: 0,
-  seaweedCount : 5
+  seaweedCount : 30
 
 };
 
 // Required for Google Webfonts
 export var WebFontConfig = {
+
+
+
   google: {
     families: ['Ravalia']
   }

@@ -43,8 +43,8 @@ export default class PlayState extends Phaser.State {
     console.log("Load Map");
     map = new LoadLevel(this.game, "level");
 
-    hud = new HUD(this.game);
-    this.add.existing(hud);
+    //hud = new HUD(this.game);
+    //this.add.existing(hud);
 
     ship = new Ship({
         game: this.game,
@@ -63,7 +63,7 @@ export default class PlayState extends Phaser.State {
 
     this.addSeaweed();
     this.addOysters();
-    this.addFish();
+    //this.addFish();
   }
 
   update() {
@@ -73,7 +73,9 @@ export default class PlayState extends Phaser.State {
       ship.kill();
       this.input.enabled = false;
       this.isRunning = false;
-    } else if(GameStats.oysterCount === GameStats.oystersCollected) {
+    } else if(GameStats.oysterCount/4 === GameStats.oystersCollected ) {
+      console.log("Oyster Count: " + GameStats.oysterCollected);
+
       ship.returnToPort()
     }
 
@@ -86,7 +88,7 @@ export default class PlayState extends Phaser.State {
     for (var i = 0; i < GameStats.oysterCount; i++) {
       oysters = new Oyster({
         game : this.game,
-        x: Math.floor(Math.random()* this.game.width) + (i * 25),
+        x: Math.floor(Math.random()* this.game.world.width) + (i * 25),
         y: this.game.height - 70,
         asset: "oyster",
         frame: Math.floor(Math.random()*11)
