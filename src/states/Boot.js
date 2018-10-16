@@ -12,7 +12,7 @@ export default class Boot extends Phaser.State {
     this.load.image("tiles", "assets/images/tileset.png");
 
     // Load Ship
-    this.load.spritesheet("ship", "assets/images/ship.png", 407,196);
+    this.load.spritesheet("ship", "assets/images/ship.png", 380,190);
     this.load.spritesheet("oyster", "assets/images/oysters.png", 64,64);
     this.load.spritesheet("fish", "assets/images/CommonCarp.png", 128,128);
     this.load.spritesheet("seaweed", "assets/images/seaweed.png", 75,85);
