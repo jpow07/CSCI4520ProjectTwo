@@ -44,9 +44,10 @@ export default class PlayState extends Phaser.State {
     console.log("Load Map");
     map = new LoadLevel(this.game, "level");
 
-    //hud = new HUD(this.game);
-    //this.add.existing(hud);
 
+    hud = new HUD(this.game);
+    this.add.existing(hud);
+    
     ship = new Ship({
         game: this.game,
         x: 100,
@@ -69,7 +70,7 @@ export default class PlayState extends Phaser.State {
   }
 
   update() {
-    if(GameStats.weight > GameStats.weightAllowed){
+    if(GameStats.fishCollected > GameStats.fishAllowed){
       console.log("Death to your ship");
       ship.alive = false;
       ship.kill();
@@ -97,7 +98,7 @@ export default class PlayState extends Phaser.State {
       });
       this.add.existing(oysters);
     }
-    GameStats.weightAllowed = GameStats.oysterCount * 25;
+    GameStats.weightAllowed = GameStats.oysterCount * GameStats.oysterWeight/2;
 
   } //End of addOysters()
 

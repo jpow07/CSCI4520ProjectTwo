@@ -5,6 +5,7 @@ let explode;
 let timecheck;
 let returnHome = false;
 let timer;
+let hud;
 export default class Ship extends Phaser.Sprite {
 
 
@@ -76,7 +77,7 @@ export default class Ship extends Phaser.Sprite {
 
 
   kill(){
-    expolde.play()
+    explode.play();
     this.body.velocity.x = 0;
     this.game.isRunning = false;
     this.body.gravity.y = 600;
