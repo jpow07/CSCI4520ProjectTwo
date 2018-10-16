@@ -1,10 +1,11 @@
 import {GameStats} from "../Helper.js"
+import {music} from "./MenuState.js"
+
 let headerOne = null;
 let message = null;
 let playMessage = null;
 let gradient;
 let gradient2;
-let music;
 
 export default class SplashState extends Phaser.State {
   constructor() {
@@ -31,7 +32,7 @@ export default class SplashState extends Phaser.State {
 
 
     // Message
-    message = this.add.text(this.world.centerX, 500);
+    message = this.add.text(1200, 500);
     message.anchor.setTo(0.5);
     message.font = 'Indie Flower';
     message.fontSize = 70;
@@ -52,9 +53,7 @@ export default class SplashState extends Phaser.State {
     gradient2.addColorStop(1, '#004CB0');
     playMessage.fill = gradient2;
     playMessage.align = 'center';
-  }
 
-  update() {
      if(!GameStats.isFinished){
 
        message.setText("Dating back to 1874, Oyster Cultivation was the leading industry\n in Norwalk Connecticut. It led to Norwalk Connecticut being nicknamed\n the Oyster Town. Each year they celebrate the Norwalk Oyster Festival\n This years festival is coming up. So lets go Harvest some Oysters!!");
@@ -62,17 +61,19 @@ export default class SplashState extends Phaser.State {
        this.game.input.onDown.add(this.beginPlayState, this);
      }
      if (GameStats.isFinished) {
+       // this.game.time.events.add(Phaser.Timer.SECOND, this.endMessage, this);
        console.log("Game Over, You win");
-       this.game.time.events.add(Phaser.Timer.SECOND, this.endMessage, this);
-
-
+       message.setText("Congratulations on another Successful harvest.\n This years Oyster Festival is going to be the talk of the town!\n")
+       playMessage.setText("Tap to Continue!");
        this.game.input.onDown.add(this.beginMenuState, this);
      }
+  }
+
+  update() {
 
   }//End of update()
 
   beginPlayState() {
-    console.log(GameStats.isFinished);
     this.state.start("PlayState", true, false);
   }
   beginMenuState() {
@@ -80,12 +81,9 @@ export default class SplashState extends Phaser.State {
     GameStats.oystersCollected = 0;
     GameStats.weight = 0;
     GameStats.FishCollected = 0;
+    music.stop();
     this.state.start("MenuState", true, false);
-  }
-
-  endMessage() {
-
-   message.setText("Congratulations on another Successful harvest.\n This years Oyster Festival is going to be the talk of the town!\n")
 
   }
+
 }//End of MenuState Class

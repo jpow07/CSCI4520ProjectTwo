@@ -17,6 +17,7 @@ let hud;
 let oceanWave;
 let seaweed;
 let gameComplete;
+let music;
 
 export default class PlayState extends Phaser.State {
   constructor() {

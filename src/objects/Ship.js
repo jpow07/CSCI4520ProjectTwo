@@ -1,4 +1,5 @@
 import {GameStats} from "../Helper.js"
+import SplashState from "../states/SplashState.js"
 
 let explode;
 let timecheck;
@@ -50,11 +51,11 @@ export default class Ship extends Phaser.Sprite {
   returnToPort() {
     this.body.collideWorldBounds = false;
     GameStats.isFinished = true;
-    if(this.x > (this.game.world.centerX)){
+    if(this.x > 4000/*(this.game.world.centerX)*/){
       this.returnHome();
-    }else if(this.x < (this.game.world.centerX) && !returnHome){
+    }else if(!returnHome){
       this.continueToEnd();
-    }else if(this.x < 300){
+    }else if(this.x < 500){
       this.game.state.start("Splash");
     }
   }

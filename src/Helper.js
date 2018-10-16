@@ -2,7 +2,7 @@
 export let GameStats = {
   isFinished : false,
   currentLevel : 0,
-  levels : ["testMap", "testMap"],
+  levels : ["level"],
   score : 0,
   weight : 0,
   weightAllowed : 500,

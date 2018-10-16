@@ -2,7 +2,7 @@ let title = null;
 let subtitle = null;
 let gradient;
 let gradient2;
-let music;
+export let music;
 export default class MenuState extends Phaser.State {
   constructor() {
     super();
@@ -17,7 +17,7 @@ export default class MenuState extends Phaser.State {
 
     this.game.stage.setBackgroundColor(0x000000);
     // Add Title
-    title = this.add.text(this.world.centerX, this.world.centerY, "~ Oyster Hunt ~");
+    title = this.add.text(1200, 500, "~ Oyster Hunt ~");
     title.anchor.setTo(0.5);
     title.font = 'Wendy One';
     title.fontSize = 200;
@@ -28,7 +28,7 @@ export default class MenuState extends Phaser.State {
     title.align = 'center';
     title.setShadow(5, 5, '#8ED6FF', 5);
     // Add Subtitle
-    subtitle = this.add.text(this.world.centerX, this.world.centerY + 200,  "Tap to Begin!");
+    subtitle = this.add.text(1200, 800,  "Tap to Begin!");
     subtitle.anchor.setTo(0.5);
     subtitle.font = 'Wendy One';
     subtitle.fontSize = 120;
