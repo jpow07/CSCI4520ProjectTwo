@@ -5,6 +5,7 @@ let playMessage = null;
 let gradient;
 let gradient2;
 let music;
+
 export default class SplashState extends Phaser.State {
   constructor() {
     super();
@@ -59,11 +60,12 @@ export default class SplashState extends Phaser.State {
        message.setText("Dating back to 1874, Oyster Cultivation was the leading industry\n in Norwalk Connecticut. It led to Norwalk Connecticut being nicknamed\n the Oyster Town. Each year they celebrate the Norwalk Oyster Festival\n This years festival is coming up. So lets go Harvest some Oysters!!");
        playMessage.setText("Tap to Continue!");
        this.game.input.onDown.add(this.beginPlayState, this);
-     } else {
+     }
+     if (GameStats.isFinished) {
        console.log("Game Over, You win");
-       message.setText("Congratulations on another Successful harvest.\n This years Oyster Festival is going to be the talk of the town!\n")
+       this.game.time.events.add(Phaser.Timer.SECOND, this.endMessage, this);
 
-       // GameStats.isFinished = false;
+
        this.game.input.onDown.add(this.beginMenuState, this);
      }
 
@@ -71,13 +73,19 @@ export default class SplashState extends Phaser.State {
 
   beginPlayState() {
     console.log(GameStats.isFinished);
-    this.state.start("PlayState",true, false);
+    this.state.start("PlayState", true, false);
   }
   beginMenuState() {
     GameStats.isFinished = false;
     GameStats.oystersCollected = 0;
     GameStats.weight = 0;
+    GameStats.FishCollected = 0;
     this.state.start("MenuState", true, false);
   }
 
+  endMessage() {
+
+   message.setText("Congratulations on another Successful harvest.\n This years Oyster Festival is going to be the talk of the town!\n")
+
+  }
 }//End of MenuState Class

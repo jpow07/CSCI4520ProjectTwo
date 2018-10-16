@@ -1,4 +1,4 @@
-import {WebFontConfig} from "../Helper.js"
+// import {WebFontConfig} from "../Helper.js"
 export default class Boot extends Phaser.State {
 
   constructor() {

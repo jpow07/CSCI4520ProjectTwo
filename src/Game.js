@@ -4,6 +4,7 @@ import PlayState from "./states/PlayState.js"
 import MenuState from "./states/MenuState.js"
 
 
+
 class Game extends Phaser.Game {
 
   constructor() {

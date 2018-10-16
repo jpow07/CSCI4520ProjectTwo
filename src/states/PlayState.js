@@ -58,7 +58,7 @@ export default class PlayState extends Phaser.State {
     this.add.existing(ship);
     this.physics.enable(ship, this.physics.ARCADE);
     // Camera to Follow ship
-    this.camera.follow(ship, Phaser.Camera.FOLLOW_LOCKON);
+    this.camera.follow(ship, Phaser.Camera.FOLLOW_PLATFORMER);
 
 
     this.addSeaweed();
@@ -73,9 +73,8 @@ export default class PlayState extends Phaser.State {
       ship.kill();
       this.input.enabled = false;
       this.isRunning = false;
-    } else if(GameStats.oysterCount/4 === GameStats.oystersCollected ) {
-      console.log("Oyster Count: " + GameStats.oysterCollected);
-
+    } else if(/*GameStats.oysterCount/4*/ 1 === GameStats.oystersCollected ) {
+      GameStats.isFinished = true;
       ship.returnToPort()
     }
 
@@ -104,7 +103,7 @@ export default class PlayState extends Phaser.State {
     for (var i = 0; i < GameStats.fishCount; i++) {
       fishes = new Fish({
         game : this.game,
-        x: Math.floor(Math.random()* this.game.width* 2) + (i * 5),
+        x: Math.floor(Math.random()* this.game.world.width * 1.10) + (i * 5),
         y: Math.floor(this.game.height - (Math.random() * 250) - 125),
         asset: "fish",
         frame: 0

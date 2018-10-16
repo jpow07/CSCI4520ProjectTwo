@@ -52,7 +52,7 @@ export default class Ship extends Phaser.Sprite {
     GameStats.isFinished = true;
     if(this.x > (this.game.world.centerX)){
       this.returnHome();
-    }else if(this.x < 2*(this.game.world.centerX) && !returnHome){
+    }else if(this.x < (this.game.world.centerX) && !returnHome){
       this.continueToEnd();
     }else if(this.x < 300){
       this.game.state.start("Splash");
@@ -72,7 +72,7 @@ export default class Ship extends Phaser.Sprite {
 
   continueToEnd(){
     console.log("Continue to end");
-    this.body.velocity.x = 800;
+    this.body.velocity.x = 1500;
   }
 
 }

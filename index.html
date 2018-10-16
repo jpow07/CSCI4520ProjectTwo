@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <title>Oyster Cult</title>
     <link rel="stylesheet" type="text/css" href="style.css"></style>
-
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower|Orbitron|Wendy+One' rel='stylesheet' type='text/css'>
   </head>
   <body>
 
-  <style>
-  @import url('https://fonts.googleapis.com/css?family=Charmonman|Indie+Flower|Orbitron|Wendy+One');
-  </style>
+  <script>
+    // Required for Google Webfonts
+    var WebFontConfig = {
 
-  <script src="//cdn.jsdelivr.net/npm/phaser-ce@2.11.1"></script>
+      google: {
+        families: ['Indie Flower', 'Oribitron', 'Wendy One']
+      }
+    };
+  </script>
+  <script src="phaser.js"></script>
   <script type="module" src="src/Game.js"></script>
-
   </body>
 
 

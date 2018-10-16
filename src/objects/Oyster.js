@@ -8,14 +8,15 @@ export default class Oyster extends Phaser.Sprite {
 
   constructor({game, x, y, asset, frame}) {
     super(game, x, y, asset, frame);
+    super.y = this.game.world.height - 100;
     this.create();
     this.inputEnabled = true;
     this.input.useHandCursor = true;
-
     //this.anchor.setTo(.5, .5);
   }// End of Consturctor
 
   create() {
+    this.scale.setTo(1.5, 1.5);
 
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     this.enableBody = true;

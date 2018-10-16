@@ -21,19 +21,6 @@
         {
          "columns":24,
          "firstgid":1,
-         "image":"../images/tileset.png",
-         "imageheight":1088,
-         "imagewidth":1536,
-         "margin":0,
-         "name":"tileset",
-         "spacing":0,
-         "tilecount":408,
-         "tileheight":64,
-         "tilewidth":64
-        },
-        {
-         "columns":24,
-         "firstgid":409,
          "image":"tileset.png",
          "imageheight":1088,
          "imagewidth":1536,
