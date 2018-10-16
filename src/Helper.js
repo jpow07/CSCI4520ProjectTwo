@@ -9,7 +9,7 @@ export let GameStats = {
   fishWeight : 100,
   fishCount : 2,
   fishCollected: 0,
-  fishAllowed : 5,
+  fishAllowed : 10,
   oysterWeight : 25,
   oysterCount : 100,
   oystersCollected: 0,

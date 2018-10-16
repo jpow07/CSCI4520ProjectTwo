@@ -1,4 +1,5 @@
 import {GameStats} from "../Helper.js"
+import Ship from "../objects/Ship.js"
 
 let score;
 let weight;
@@ -15,15 +16,18 @@ export default class HUD extends Phaser.Sprite {
   }
 
   create() {
-    this.fixedToCamera = true;
+    this.fixedToCamera = false;
 
-    score = this.createText("black", "Orbitron", 60, this.game.camera.centerX - 800, 100);
-    weight = this.createText("black", "Orbitron", 60, this.game.camera.centerX + 800, 100);
-    gameOver = this.createText("black", "Orbitron", 190, this.game.world.centerX, this.game.world.centerY);
+    score = this.createText("black", "Orbitron", 60, this.game.width/2 + 800, 100);
+    weight = this.createText("black", "Orbitron", 60, this.game.width/2 + 200, 100);
+    gameOver = this.createText("black", "Orbitron", 190, this.game.width/2 + 400, this.game.height/2);
 
   }
 
   update() {
+    weight.x += 2;
+    score.x += 2;
+    gameOver.x += 2;
     if(this.game.isRunning) {
       score.setText("Score: " + GameStats.score);
       if(GameStats.weight > (GameStats.allowedWeight - 150)){
